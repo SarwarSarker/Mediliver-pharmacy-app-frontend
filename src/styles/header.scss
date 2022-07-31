@@ -1,0 +1,26 @@
+.navbar {
+  background-color: #0b8176;
+
+  .navbar-brand {
+    font-family: "Pacifico", cursive;
+    font-size: 35px;
+    color: rgb(214, 213, 219) !important;
+  }
+  .nav__icon {
+    background-color: #fff;
+  }
+  .nav-link {
+    font-size: 1rem;
+    margin: 8px;
+    color: #fff !important;
+    font-family: "Roboto Condensed", sans-serif;
+
+    &:hover {
+      color: #ff8080 !important;
+    }
+
+    .active {
+      color: #ff8080 !important;
+    }
+  }
+}

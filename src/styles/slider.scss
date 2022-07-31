@@ -1,0 +1,43 @@
+.carousel {
+  height: 100vh;
+  background-color: #29a397;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  i {
+    color: rgb(0, 85, 85) !important;
+  }
+
+  button {
+    font-size: 1rem;
+    background-color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    color: rgb(0, 85, 85);
+  }
+
+  img {
+    height: auto;
+    width: auto;
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  @media screen and (max-width: 992px) {
+    h1 {
+      font-size: 3rem;
+    }
+
+    img {
+      width: 300px;
+      height: 300px;
+    }
+  }
+}

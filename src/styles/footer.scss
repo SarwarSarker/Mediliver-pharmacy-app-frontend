@@ -1,0 +1,25 @@
+footer {
+  background-color: #0b8176;
+  color: white;
+
+  .brandname {
+    font-family: "Pacifico", cursive;
+    font-size: 35px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 4px;
+      color: #c5cae9;
+
+      &:hover {
+        color: #957bda;
+        cursor: pointer;
+      }
+    }
+  }
+}

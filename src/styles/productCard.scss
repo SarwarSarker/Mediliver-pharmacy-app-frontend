@@ -1,0 +1,35 @@
+.productCard {
+  .card {
+    border-radius: 0.7rem;
+    border-bottom: 3px solid rgb(19, 148, 19);
+
+    .card-title {
+      font-size: 1.2rem;
+
+      span {
+        font-size: 0.9rem;
+      }
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+    }
+
+    .button {
+      // background-color: rgb(5, 184, 79);
+      border: 1px solid rgb(5, 184, 79);
+      background-color: transparent;
+      color: rgb(5, 184, 79);
+      font-weight: 400;
+
+      &:hover {
+        background-color: rgb(1, 136, 69);
+        color: #fff;
+      }
+    }
+
+    img {
+      height: 220px;
+    }
+  }
+}

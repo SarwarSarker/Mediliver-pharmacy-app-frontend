@@ -1,0 +1,29 @@
+.checkout {
+  .shipping_info {
+    background-color: rgb(243, 243, 243);
+  }
+  .box {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 2px solid #e9ebef;
+    padding: 50px;
+    margin-bottom: 40px;
+  }
+
+  .widget {
+    margin-bottom: 30px;
+    background-color: #f0efef;
+    padding: 50px;
+    border-radius: 6px;
+  }
+
+  // .info_box {
+  //   width: 100%;
+  // }
+
+  // @media screen and (max-width: 992px) {
+  //   .info_box {
+  //     width: 80%;
+  //   }
+  // }
+}
