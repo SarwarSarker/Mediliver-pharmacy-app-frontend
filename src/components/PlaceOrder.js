@@ -14,7 +14,7 @@ const PlaceOrder = () => {
   const { user } = useSelector((state) => state.auth);
 
   const onSubmit = () => {
-    dispatch(createOrder());
+    dispatch(createOrder({ cartItems, shippingInfo }));
     navigate("/orderSuccess");
   };
 
