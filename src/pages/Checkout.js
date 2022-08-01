@@ -1,5 +1,5 @@
 import React from "react";
-import MultiForm from "../components/MultiForm";
+import ShippingAddress from "../components/ShippingAddress";
 import "../styles/checkout.scss";
 
 const Checkout = () => {
@@ -7,7 +7,7 @@ const Checkout = () => {
     <>
       <h1 className="text-center fw-bold py-5">Checkout</h1>
 
-      <MultiForm />
+      <ShippingAddress />
     </>
   );
 };

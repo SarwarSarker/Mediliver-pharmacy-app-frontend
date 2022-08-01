@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { registerUser, reset } from "../features/auth/authSlice";
@@ -9,6 +9,9 @@ import { registerUser, reset } from "../features/auth/authSlice";
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from || "/";
 
   const { user, isError, isSuccess, message } = useSelector(
     (state) => state.auth
@@ -21,9 +24,9 @@ const Register = () => {
 
     if (isSuccess) {
       dispatch(reset());
-      navigate("/");
+      navigate(from, { replace: true });
     }
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
+  }, [user, isError, isSuccess, message, navigate, dispatch, from]);
 
   const initialvalues = {
     name: "",
@@ -42,9 +45,7 @@ const Register = () => {
 
   const handleRegister = (formValue) => {
     const { name, email, password } = formValue;
-    dispatch(registerUser({ name, email, password })).then(() => {
-      navigate("/");
-    });
+    dispatch(registerUser({ name, email, password }));
   };
 
   return (

@@ -4,6 +4,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import OrderSuccess from "./components/OrderSuccess";
+import PlaceOrder from "./components/PlaceOrder";
 import PrivateRoute from "./components/PrivateRoute";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
@@ -31,6 +33,22 @@ function App() {
             element={
               <PrivateRoute user={user}>
                 <Checkout />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="placeOrder"
+            element={
+              <PrivateRoute user={user}>
+                <PlaceOrder />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="orderSuccess"
+            element={
+              <PrivateRoute user={user}>
+                <OrderSuccess />
               </PrivateRoute>
             }
           />
