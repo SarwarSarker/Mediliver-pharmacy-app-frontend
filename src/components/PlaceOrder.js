@@ -1,20 +1,36 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { createOrder } from "../features/order/orderslice";
+import { clearCart } from "../features/cart/cartSlice";
+import { createNewOrder } from "../features/order/orderSlice";
 import "../styles/placeOrder.scss";
 
 const PlaceOrder = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { cartItems, shippingInfo, cartTotalQuantity, cartTotalAmount } =
-    useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart);
+  const { cartItems, shippingInfo, cartTotalQuantity, cartTotalAmount } = cart;
 
-  const { user } = useSelector((state) => state.auth);
+  const itemsPrice = cartTotalAmount;
+  const shippingPrice = itemsPrice > 100 ? 0 : 10;
+  const taxPrice = Math.floor(0.15 * itemsPrice);
+  const totalPrice = itemsPrice + shippingPrice + taxPrice;
+
+  const order = {
+    shippingInfo,
+    orderItems: cartItems,
+    itemsPrice: itemsPrice,
+    taxPrice: taxPrice,
+    shippingPrice: shippingPrice,
+    totalPrice: totalPrice,
+  };
+
+  console.log(order);
 
   const onSubmit = () => {
-    dispatch(createOrder({ cartItems, shippingInfo }));
+    dispatch(createNewOrder(order));
+    dispatch(clearCart());
     navigate("/orderSuccess");
   };
 
@@ -62,10 +78,10 @@ const PlaceOrder = () => {
                         <h6 className="text-muted">{cart.dose}</h6>
                       </div>
                       <div className="d-flex justify-content-between align-items-center">
-                        {cart.cartQuantity}
+                        {cart.quantity}
                       </div>
                       <div>$ {cart.unit_price}</div>
-                      <div> $ {cart.unit_price * cart.cartQuantity}</div>
+                      <div> $ {cart.unit_price * cart.quantity}</div>
                     </div>
                   </div>
                 ))}
@@ -83,15 +99,19 @@ const PlaceOrder = () => {
               </div>
               <div className="d-flex justify-content-between align-items-center pt-3 ">
                 <h6 className="fw-bolder">Price </h6>
-                <h6>$ {cartTotalAmount}</h6>
+                <h6>$ {itemsPrice}</h6>
+              </div>
+              <div className="d-flex justify-content-between align-items-center pt-3 ">
+                <h6 className="fw-bolder">Tax </h6>
+                <h6>$ {taxPrice}</h6>
               </div>
               <div className="d-flex justify-content-between align-items-center pt-3">
                 <h6 className="">SHIPPING COST</h6>
-                <h6>$ 20.00</h6>
+                <h6>$ {shippingPrice}</h6>
               </div>
               <div className="d-flex justify-content-between align-items-center pt-3">
                 <h6 className="fw-bolder">TOTAL PRICE</h6>
-                <h6 className="fw-bolder">$ {cartTotalAmount + 20}</h6>
+                <h6 className="fw-bolder">$ {totalPrice}</h6>
               </div>
             </div>
 

@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import orderService from "./orderService";
 
-export const createOrder = createAsyncThunk(
-  "order/createOrder",
+export const createNewOrder = createAsyncThunk(
+  "order/createNewOrder",
   async (orderData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await orderService.createGoal(orderData, token);
+      return await orderService.createOrder(orderData, token);
     } catch (error) {
       const message =
         (error.response && error.response.data && error.response.data) ||
@@ -29,8 +29,8 @@ const orderSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(createOrder.fulfilled, (state, action) => {
-      state.neworder = action.payload;
+    builder.addCase(createNewOrder.fulfilled, (state, action) => {
+      state.order = action.payload;
       console.log(action.payload);
     });
   },

@@ -61,7 +61,7 @@ const Cart = () => {
                             -
                           </button>
                           <div className="border text-center p-2">
-                            {cart.cartQuantity}
+                            {cart.quantity}
                           </div>
                           <button
                             className="border p-1 ms-2"
@@ -71,7 +71,7 @@ const Cart = () => {
                           </button>
                         </div>
                         <div>$ {cart.unit_price}</div>
-                        <div> $ {cart.unit_price * cart.cartQuantity}</div>
+                        <div> $ {cart.unit_price * cart.quantity}</div>
                         <div>
                           <Button
                             variant="danger"
@@ -97,14 +97,8 @@ const Cart = () => {
                     <div className="col text-right">$ {cartTotalAmount}</div>
                   </div>
                   <div className="row pt-3">
-                    <div className="col">SHIPPING COST</div>
-                    <div className="col text-right">$ 20.00</div>
-                  </div>
-                  <div className="row pt-3">
                     <div className="col">TOTAL PRICE</div>
-                    <div className="col text-right">
-                      $ {cartTotalAmount + 20}
-                    </div>
+                    <div className="col text-right">$ {cartTotalAmount}</div>
                   </div>
                   <Link to="/checkout" className="btn btn-dark checkout">
                     CHECKOUT

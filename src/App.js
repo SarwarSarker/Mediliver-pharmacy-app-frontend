@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Product from "./pages/Product";
 import ProductDetail from "./pages/ProductDetail";
+import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 
 function App() {
@@ -49,6 +50,14 @@ function App() {
             element={
               <PrivateRoute user={user}>
                 <OrderSuccess />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <PrivateRoute user={user}>
+                <Profile />
               </PrivateRoute>
             }
           />

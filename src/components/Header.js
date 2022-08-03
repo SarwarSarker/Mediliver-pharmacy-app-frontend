@@ -44,7 +44,14 @@ const Header = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link
+                      to="/profile"
+                      className="text-decoration-none text-dark"
+                    >
+                      Profile
+                    </Link>
+                  </Dropdown.Item>
                   <Dropdown.Item>
                     <Button variant="danger" onClick={onLogout}>
                       Logout

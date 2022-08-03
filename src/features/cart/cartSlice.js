@@ -23,13 +23,13 @@ export const cartSlice = createSlice({
       if (existingIndex >= 0) {
         state.cartItems[existingIndex] = {
           ...state.cartItems[existingIndex],
-          cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
+          quantity: state.cartItems[existingIndex].quantity + 1,
         };
         toast.info("Increased product quantity", {
           position: "bottom-left",
         });
       } else {
-        let tempProductItem = { ...action.payload, cartQuantity: 1 };
+        let tempProductItem = { ...action.payload, quantity: 1 };
         state.cartItems.push(tempProductItem);
         toast.success("Product added to cart", {
           position: "bottom-left",
@@ -42,13 +42,13 @@ export const cartSlice = createSlice({
         (item) => item._id === action.payload._id
       );
 
-      if (state.cartItems[itemIndex].cartQuantity > 1) {
-        state.cartItems[itemIndex].cartQuantity -= 1;
+      if (state.cartItems[itemIndex].quantity > 1) {
+        state.cartItems[itemIndex].quantity -= 1;
 
         toast.warn("Decreased product quantity", {
           position: "bottom-left",
         });
-      } else if (state.cartItems[itemIndex].cartQuantity === 1) {
+      } else if (state.cartItems[itemIndex].quantity === 1) {
         state.cartItems = state.cartItems.filter(
           (item) => item._id !== action.payload._id
         );
@@ -76,27 +76,28 @@ export const cartSlice = createSlice({
       });
     },
     getTotals(state, action) {
-      let { total, quantity } = state.cartItems.reduce(
+      let { total, cartquantity } = state.cartItems.reduce(
         (cartTotal, cartItem) => {
-          const { unit_price, cartQuantity } = cartItem;
-          const itemTotal = unit_price * cartQuantity;
+          const { unit_price, quantity } = cartItem;
+          const itemTotal = unit_price * quantity;
 
           cartTotal.total += itemTotal;
-          cartTotal.quantity += cartQuantity;
+          cartTotal.cartquantity += quantity;
 
           return cartTotal;
         },
         {
           total: 0,
-          quantity: 0,
+          cartquantity: 0,
         }
       );
       total = parseFloat(total.toFixed(2));
-      state.cartTotalQuantity = quantity;
+      state.cartTotalQuantity = cartquantity;
       state.cartTotalAmount = total;
     },
     clearCart(state, action) {
       state.cartItems = [];
+      state.shippingInfo = [];
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
       // toast.error("Cart cleared", { position: "bottom-left" });
     },
