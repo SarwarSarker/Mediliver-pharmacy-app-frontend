@@ -68,7 +68,7 @@ const Service = () => {
                   <i className="fas fa-thumbs-up"></i>
                 </div>
                 <p className="pt-3">
-                  Provides accurate and high quality prescription drugs.
+                  Provides accurate and high quality drugs.
                 </p>
               </div>
             </Col>
