@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://mediliver.herokuapp.com";
+const URL = "https://mediliver-pharmacy.onrender.com";
 
 //register user
 const register = async (userData) => {
