@@ -26,8 +26,6 @@ const PlaceOrder = () => {
     totalPrice: totalPrice,
   };
 
-  console.log(order);
-
   const onSubmit = () => {
     dispatch(createNewOrder(order));
     dispatch(clearCart());
